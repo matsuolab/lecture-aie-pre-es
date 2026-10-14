@@ -1,19 +1,19 @@
-# これは演習用のフォルダです。
+# Carpeta para los ejercicios
 
 
-## Linuxデモンストレーション
-以下のファイル構成・権限を目指します。
-権限は `ls -la` で表示される記号表記（例: `-rw-------`）で記載しています。
+## Demostración de Linux
+El objetivo es obtener la siguiente estructura de archivos y permisos.
+Los permisos se indican con la notación simbólica que muestra `ls -la` (por ejemplo, `-rw-------`).
 
-```ファイル構成
+```estructura-de-archivos
 lecture/                                        drwxr-xr-x
 ├── README.md                                   -rw-r--r--
 ├── docker-compose.yml                          -rw-r--r--
 ├── backend/                                     drwxr-xr-x
 │   ├── Dockerfile                              -rw-r--r--
 │   ├── main.py                                 -rw-r--r--
-|   ├── .env                                    -rw-------  ← chmod 600（機密情報のため所有者のみ）
-|   ├── .env.example                            -rw-r--r--  ← 共有用テンプレート
+|   ├── .env                                    -rw-------  ← chmod 600 (solo el propietario, porque contiene información confidencial)
+|   ├── .env.example                            -rw-r--r--  ← plantilla para compartir
 │   ├── requirements.txt                        -rw-r--r--
 └── frontend/                                    drwxr-xr-x
     ├── Dockerfile                              -rw-r--r--
@@ -28,21 +28,21 @@ lecture/                                        drwxr-xr-x
 ```
 
 
-## Dockerデモンストレーション
-Docker composeを使って開発サーバーを立ち上げられます。
+## Demostración de Docker
+Puedes iniciar un servidor de desarrollo con Docker compose.
 ```
-cp backend/.env.example backend/.env && chmod 600 backend/.env   # 初回のみ
+cp backend/.env.example backend/.env && chmod 600 backend/.env   # Solo la primera vez
 docker compose up -d --build
 ```
 
-### 送信すると「通信に失敗しました。」(504) になる場合
-Codespaceでは、古い方式のファイアウォール(iptables-legacy)がコンテナ間の通信を捨ててしまうことがあります。
-Composeのネットワーク(`br-`で始まる名前)同士の通信を許可するため、Codespace起動後に1回だけ次を実行してください。
+### Si al enviar aparece el error 504: «La comunicación ha fallado».
+En Codespace, el cortafuegos antiguo (iptables-legacy) puede descartar la comunicación entre contenedores.
+Para permitir la comunicación entre las redes de Compose (cuyos nombres empiezan por `br-`), ejecuta lo siguiente una sola vez después de iniciar el Codespace.
 ```
 sudo iptables-legacy -I FORWARD 1 -i br-+ -o br-+ -j ACCEPT
 ```
-- 設定はCodespaceを再起動すると消えます(再起動後にもう一度実行)。
-- 元に戻す場合: `sudo iptables-legacy -D FORWARD -i br-+ -o br-+ -j ACCEPT`
+- La configuración desaparece al reiniciar el Codespace (vuelve a ejecutarlo después de reiniciar).
+- Para deshacer el cambio: `sudo iptables-legacy -D FORWARD -i br-+ -o br-+ -j ACCEPT`
 
-以下が開発用サーバーになっています。
+El servidor de desarrollo está disponible en la siguiente dirección.
 http://localhost:8080/

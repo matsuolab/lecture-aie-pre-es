@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-// nginxが/app/apiをbackendコンテナへリバースプロキシするので、
-// フロントは自分がアクセスされているオリジンへの相対パスでリクエストすればよい
-// (localhostをハードコードするとCodespaceなど別ホストからのアクセスで届かなくなる)
+// Como nginx actúa como proxy inverso de /app/api hacia el contenedor backend,
+// el frontend puede enviar las peticiones a una ruta relativa al origen desde el que se accede
+// (Si se fija localhost en el código, las peticiones no llegarán al acceder desde otro host, como en Codespace)
 const API_URL = "/app/api";
 
 export function App() {
@@ -22,14 +22,14 @@ export function App() {
       });
 
       if (!response.ok) {
-        throw new Error("APIエラーが発生しました");
+        throw new Error("Se ha producido un error de API");
       }
 
       const data = await response.json();
-      setResult(`返答: ${data.reply}`);
+      setResult(`Respuesta: ${data.reply}`);
     } catch (error) {
       console.error(error);
-      setResult("通信に失敗しました。");
+      setResult("La comunicación ha fallado.");
     }
   };
 
@@ -38,11 +38,11 @@ export function App() {
       <h1>Docker Compose Demo</h1>
       <input
         type="text"
-        placeholder="メッセージを入力"
+        placeholder="Escribe un mensaje"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
       />
-      <button onClick={handleSend}>送信</button>
+      <button onClick={handleSend}>Enviar</button>
       <p>{result}</p>
     </>
   );

@@ -1,7 +1,7 @@
-# preDay 1の記録
+# Registro de pre-Day1
 
-## 今日の目標
+## Objetivos de hoy
 
-## 学んだこと
+## Lo que he aprendido
 
-## 次に試したいこと
+## Lo que quiero probar a continuación

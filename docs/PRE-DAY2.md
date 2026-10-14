@@ -1,48 +1,48 @@
-# 次回の準備課題
+# Tarea de preparación para la próxima sesión
 
-次回は、Webページからの応答を確認し、その結果と日時をレポートにまとめます。この処理を、自分のRepositoryで動かします。その材料になる二つのファイルを、自分のCodespaceに用意しておいてください。目安は10分ほどです。提出はありません。
+En la próxima sesión comprobaremos la respuesta de una página web y reuniremos el resultado y la fecha y hora en un informe. Ejecutaremos este proceso en nuestro propio repositorio. Prepara en tu Codespace los dos archivos que servirán de base. Se necesitan unos 10 minutos. No hay que entregar nada.
 
-## 用意するもの
+## Qué preparar
 
-`pre_day2`というフォルダーの中に、次の二つを作ります。
+Crea los siguientes dos archivos dentro de una carpeta llamada `pre_day2`.
 
-- `pre_day2/template.md` — レポートの文章の原本
-- `pre_day2/generate.sh` — 原本からレポートを作る処理
+- `pre_day2/template.md` — La plantilla con el texto del informe
+- `pre_day2/generate.sh` — El proceso que genera el informe a partir de la plantilla
 
-中身は、このページの下にあります。読んで動かすのは次回です。今回は用意するだけで構いません。
+El contenido está más abajo en esta página. Lo leeremos y ejecutaremos en la próxima sesión. Por ahora, basta con prepararlo.
 
-## やること
+## Pasos a seguir
 
-1. 今日使っていたCodespaceを開きます。タブが残っていれば、それに戻ります。閉じていた場合は、GitHubで自分のRepositoryのページを開き、今日と同じように`Code`から`Codespaces`を選ぶと、今日作ったCodespaceが一覧に出るので、それを押します。新しく作らないでください。
-2. ファイル一覧で、新しいファイル`pre_day2/template.md`を作ります。作り方は次の節にあります。
-3. 下の「template.md」の枠の中身をコピーして貼り付け、今日と同じように保存します。
-4. `pre_day2/generate.sh`も、同じ手順で作って保存します。
-5. 二つのファイルを開いて、このページの枠と同じ中身になっているか見比べます。
+1. Abre el Codespace que has utilizado hoy. Si la pestaña sigue abierta, vuelve a ella. Si la has cerrado, abre en GitHub la página de tu repositorio y, como hoy, selecciona `Codespaces` en `Code`. Aparecerá en la lista el Codespace que has creado hoy; haz clic en él. No crees uno nuevo.
+2. En la lista de archivos, crea el nuevo archivo `pre_day2/template.md`. La siguiente sección explica cómo hacerlo.
+3. Copia y pega el contenido del bloque «template.md» que aparece más abajo y guárdalo como has hecho hoy.
+4. Crea y guarda también `pre_day2/generate.sh` siguiendo los mismos pasos.
+5. Abre los dos archivos y compara su contenido con los bloques de esta página para comprobar que coinciden.
 
-今回はbranchを作らず、masterのまま進めて構いません。記録は次回に行います。
+Esta vez puedes continuar en master sin crear una rama. Haremos el commit en la próxima sesión.
 
-## 新しいファイルの作り方（今日の実習で扱っていない操作）
+## Cómo crear un archivo nuevo (operación que no hemos visto en la práctica de hoy)
 
-1. ファイル一覧の一番上にある、自分のRepository名の行（大文字で表示されています）を右クリックします。
-2. 出てきたメニューの`New File...`（新しいファイル）を選びます。名前の入力欄が出ます。
-3. `pre_day2/template.md`と入力して、Enterキーを押します。`pre_day2`フォルダーと、その中のファイルが同時にでき、空の編集画面が開きます。
+1. Haz clic con el botón derecho en la fila con el nombre de tu repositorio, en la parte superior de la lista de archivos (aparece en mayúsculas).
+2. En el menú que aparece, selecciona `New File...` (archivo nuevo). Aparecerá un campo para introducir el nombre.
+3. Escribe `pre_day2/template.md` y pulsa Enter. Se crearán a la vez la carpeta `pre_day2` y el archivo que contiene, y se abrirá un editor vacío.
 
-表示が違う場合は、ファイル一覧の中で「新しいファイル」にあたる項目を探してください。また、ファイルが並んでいる下の空白を右クリックしても、同じメニューが出ます。Codespaceの編集画面は、VS Codeというエディターです。公式の画面案内: [User Interface — Explorer（VS Code Docs）](https://code.visualstudio.com/docs/editing/getting-started/userinterface#_explorer-view)
+Si la pantalla es distinta, busca en la lista de archivos la opción equivalente a «archivo nuevo». También puedes abrir el mismo menú haciendo clic con el botón derecho en el espacio vacío situado debajo de los archivos. El editor del Codespace se llama VS Code. Guía oficial de la interfaz: [User Interface — Explorer (VS Code Docs)](https://code.visualstudio.com/docs/editing/getting-started/userinterface#_explorer-view)
 
-## 貼り付ける中身
+## Contenido que debes pegar
 
-枠の中身だけを貼り付けます。ファイル名や、枠を囲む記号は入れません。ターミナルには貼り付けないでください。今回は実行しません。
+Pega solo el contenido de los bloques. No incluyas el nombre del archivo ni los símbolos que delimitan el bloque. No lo pegues en la terminal. Esta vez no vamos a ejecutarlo.
 
 ### template.md
 
 ```markdown
-# Webページの確認レポート
+# Informe de comprobación de una página web
 
-対象: https://example.com/
-確認日時（UTC）: {{CHECKED_AT}}
-応答コード: {{HTTP_STATUS}}
+Página: https://example.com/
+Fecha y hora de comprobación (UTC): {{CHECKED_AT}}
+Código de estado HTTP: {{HTTP_STATUS}}
 
-このレポートは、原本と確認結果をもとに生成します。
+Este informe se genera a partir de la plantilla y los resultados de la comprobación.
 ```
 
 ### generate.sh
@@ -50,51 +50,51 @@
 ```sh
 #!/bin/sh
 
-# このファイルは、Webページの確認結果からレポートを作るスクリプトです。
-# 1行目の #! は、この中身を sh というプログラムで実行してほしい、という指定です。
-# # から行末までは、実行されない説明書きです。
+# Este archivo es un script que crea un informe con los resultados de comprobar una página web.
+# El #! de la primera línea indica que este contenido debe ejecutarse con el programa sh.
+# Desde # hasta el final de la línea son comentarios que no se ejecutan.
 
-# 途中でエラーが起きたら、その時点で止めます（-e）。
-# 中身が決まっていない値を使おうとしたときも止めます（-u）。
+# Si se produce un error, se detiene en ese momento (-e).
+# También se detiene si se intenta utilizar una variable que no tiene un valor definido (-u).
 set -eu
 
-# このスクリプトが置かれているフォルダーへ移動します。
-# $0 はこのファイル自身の場所、dirname はそこからフォルダー名だけを取り出す命令です。
-# どこから実行しても、となりにある template.md を同じように読めるようにしています。
+# Cambia a la carpeta donde se encuentra este script.
+# $0 es la ruta de este archivo; dirname es el comando que extrae solo el nombre de la carpeta.
+# Así se puede leer el archivo template.md de la misma carpeta, desde dondequiera que se ejecute.
 cd "$(dirname "$0")"
 
-# case で、実行時に後ろへ付けた文字の個数ごとに処理を分けます。
-# $# は、後ろへ付けた文字の個数です。
+# case elige qué hacer según el número de argumentos añadidos al ejecutar el script.
+# $# es el número de argumentos añadidos.
 case "$#" in
-  # 0 は、後ろに何も付けずに実行した場合です。
+  # 0 corresponde al caso en que se ejecuta sin añadir ningún argumento.
   0)
-    # [1] Webページへアクセスし、応答コードを http_status に入れます。
-    #     失敗はエラーとして扱い、30秒で打ち切り、本文は保存しません。
+    # [1] Accede a la página web y guarda el código de estado HTTP en http_status.
+    #     Trata los fallos como errores, limita la espera a 30 segundos y no guarda el cuerpo de la respuesta.
     http_status=$(curl --fail --silent --show-error --location --max-time 30 \
       --output /dev/null --write-out '%{http_code}' https://example.com/)
 
-    # [2] 確認した日時を、世界標準時で checked_at に入れます。
+    # [2] Guarda en checked_at la fecha y hora de la comprobación en UTC.
     checked_at=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
 
-    # [3] template.md の二つの印を上の値に置き換え、report.md に書き出します。
-    #     区切りに | を使うのは、値に / が入っても壊れないようにするためです。
+    # [3] Sustituye los dos marcadores de template.md por los valores anteriores y escribe el resultado en report.md.
+    #     Se usa | como separador para que los valores que contienen / no rompan la sustitución.
     sed -e "s|{{CHECKED_AT}}|$checked_at|g" \
         -e "s|{{HTTP_STATUS}}|$http_status|g" template.md > report.md
 
-    printf '%s\n' 'report.md を生成しました。'
-    # ;; でこの場合の処理を終えます。
+    printf '%s\n' 'Se ha generado report.md.'
+    # ;; termina el procesamiento de este caso.
     ;;
 
-  # 1 は、後ろに文字を一つ付けて実行した場合です。
+  # 1 corresponde al caso en que se ejecuta añadiendo un argumento.
   1)
-    # $1 は、実行時に後ろへ付けた一つ目の文字のことです。
+    # $1 es el primer argumento añadido al ejecutar el script.
     if [ "$1" != "setup-actions" ]; then
-      printf '%s\n' '使い方: ./generate.sh または ./generate.sh setup-actions' >&2
+      printf '%s\n' 'Uso: ./generate.sh o ./generate.sh setup-actions' >&2
       exit 2
     fi
-    # 自動実行の設定を置くフォルダーを作ります。すでにある場合はそのまま使います。
+    # Crea la carpeta para la configuración de ejecución automática. Si ya existe, la utiliza tal cual.
     mkdir -p ../.github/workflows
-    # 次の行から WORKFLOW と書かれた行の手前までを、そのままファイルへ書き出します。
+    # Escribe en el archivo, sin cambios, desde la siguiente línea hasta la anterior a WORKFLOW.
     cat > ../.github/workflows/update-report.yml <<'WORKFLOW'
 name: Update report
 
@@ -132,7 +132,7 @@ jobs:
       - name: Commit the changed report
         run: |
           if [ -z "$(git status --porcelain -- pre_day2/report.md)" ]; then
-            echo "report.md に変更はありません。"
+            echo "No hay cambios en report.md."
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -141,21 +141,21 @@ jobs:
           git commit -m "chore: update report"
           git push
 WORKFLOW
-    # 書き出せたことを画面に伝えます。
-    printf '%s\n' '.github/workflows/update-report.yml を作成しました。'
+    # Muestra en pantalla que se ha escrito el archivo.
+    printf '%s\n' 'Se ha creado .github/workflows/update-report.yml.'
     ;;
 
-  # * は、ここまでのどちらにも当てはまらない場合です。
+  # * corresponde a los casos que no coinciden con ninguno de los dos anteriores.
   *)
-    printf '%s\n' '使い方: ./generate.sh または ./generate.sh setup-actions' >&2
+    printf '%s\n' 'Uso: ./generate.sh o ./generate.sh setup-actions' >&2
     exit 2
     ;;
-# esac で case 全体を終えます。
+# esac termina todo el bloque case.
 esac
 ```
 
-## できた状態
+## Resultado esperado
 
-- ファイル一覧の`pre_day2`の中に二つのファイルがあり、開くとこのページの枠と同じ中身です。
-- 今日の実習で、変更したファイルの名前を確かめた操作をすると、`pre_day2/`が表示されます。新しく作ったファイルなので、今日とは違う見出しの下に出ますが、`pre_day2/`が見えていれば大丈夫です。保存はしたが、まだ記録していない状態です。記録は次回に行うので、今回はここまでで完了です。
-- 次回はこのCodespaceから始めます。Codespaceは消さずに残してください。もしCodespaceが消えていた場合は、今日と同じ手順で新しく作り、二つのファイルもこのページの手順でもう一度作ります。
+- En la lista de archivos, hay dos archivos dentro de `pre_day2`; al abrirlos, su contenido coincide con los bloques de esta página.
+- Al realizar la operación que has usado hoy para comprobar los nombres de los archivos modificados, aparece `pre_day2/`. Como son archivos nuevos, aparecen bajo un encabezado distinto al de hoy, pero basta con que veas `pre_day2/`. Están guardados, pero todavía no se ha hecho un commit. Lo haremos en la próxima sesión, así que por ahora has terminado.
+- En la próxima sesión empezaremos desde este Codespace. Consérvalo sin eliminarlo. Si ha desaparecido, crea uno nuevo siguiendo los mismos pasos que hoy y vuelve a crear los dos archivos con las instrucciones de esta página.

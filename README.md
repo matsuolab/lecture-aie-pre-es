@@ -1,4 +1,4 @@
-# AIEプレ講座 学習記録
+# Registro de aprendizaje de AI Engineering Pilot Course
 
-- [preDay 1の記録](records/pre_day1.md)
-- [次に取り組む課題](tasks.md)
+- [Registro de pre-Day1](records/pre_day1.md)
+- [Próximas tareas](tasks.md)

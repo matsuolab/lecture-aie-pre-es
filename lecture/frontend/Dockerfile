@@ -1,4 +1,4 @@
-# --- ビルド用ステージ ---
+# --- Etapa de compilación ---
 FROM node:22-slim AS builder
 
 WORKDIR /app
@@ -9,15 +9,15 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# --- 実行用ステージ ---
-# 軽量なnginxイメージでビルド済み静的ファイルを配信する
+# --- Etapa de ejecución ---
+# Sirve los archivos estáticos compilados con una imagen ligera de nginx
 FROM nginx:alpine AS runner
 
-# viteのビルド成果物(dist)のみをnginxの公開ディレクトリに配置
+# Coloca solo el resultado de la compilación de vite (dist) en el directorio público de nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# /app/apiをbackendコンテナへリバースプロキシする設定
+# Configuración del proxy inverso de /app/api hacia el contenedor backend
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# 80番ポートで待ち受け(nginxイメージの標準設定)
+# Escucha en el puerto 80 (configuración predeterminada de la imagen de nginx)
 EXPOSE 80

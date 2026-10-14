@@ -33,7 +33,7 @@ def api_endpoint(req: MessageRequest):
     else:
         return {
         "status": "success",
-        "reply": f"{req.input_text}は{len(req.input_text)}文字です。",
+        "reply": f"El texto {req.input_text} tiene {len(req.input_text)} caracteres.",
         }
 
 

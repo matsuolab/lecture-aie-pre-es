@@ -1,3 +1,3 @@
-# 次に取り組む課題
+# Próximas tareas
 
-## これから試すこと
+## Lo que voy a probar
